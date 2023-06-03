@@ -1,0 +1,87 @@
+# 6877
+print('x y z w')
+for x in range(2):
+    for y in range(2):
+        for z in range(2):
+            for w in range(2):
+                c = (not(y <= w) or (x <= z) or not(x))
+                if c == 0: 
+                    print(x, y, z, w)
+
+
+# 6884
+mi = []
+for n in range(1, 300):
+    b = bin(n)[2:]
+    if n % 2 == 0: b = '1' + b + '0'
+    else: b = '11' + b + '11'
+    c = int(b, 2)
+    if c > 225:
+        mi += [c]
+print(min(mi))
+
+
+# 7083
+c = '1' + '0' * 55
+while '1' in c:
+    if '10' in c: c = c.replace('10', '001', 1)
+    else: c = c.replace('1', '00')
+print(c.count('0'))
+
+
+# 7085
+a = 3 * 625 ** 173 + 4 * 125 ** 180 + 3 * 25 ** 157 + 2 * 5 ** 155 + 156
+c = []
+while a != 0:
+    c = [a % 25] + c
+    a //= 25
+print(c.count(0))
+
+
+# 7086
+def f(x):
+    return (x % a == 0) or ((50 <= x <= 70) <= (not(x % 16 == 0)))
+for a in range(1, 1000):
+    if all(f(x) for x in range(1, 1000)):
+        print(a)
+
+
+# 7088
+def f(n):
+    if n <= 1: return 0
+    if n > 1 and n % 2 == 0: return 2 * f(n - 1) + 1
+    else: return (n + 1) // 2 + f(n - 1)
+print(f(33))
+
+
+# 7089
+s = [int(x) for x in open('C:/Users/User/PycharmProjects/pythonProject/17.txt')]
+ans = []
+m = min(s)
+for i in range(len(s) - 1):
+    if (s[i] % 111 == m) or (s[i + 1] % 111 == m):
+        ans.append(s[i] + s[i + 1])
+print(len(ans), min(ans))
+
+
+# 7093
+def f(x, y):
+    if x > y or x == 20: 
+        return 0
+    if x == y: 
+        return 1
+    if x < y: 
+        return f(x + 1, y) + f(x + 2, y) + f(x * 3, y)
+print(f(4, 10) * f(10, 22))
+
+
+# 7094
+s = open('24.txt').readline().replace('A', 'U').replace('C', 'F').replace('D', 'F').replace('FU', '*').replace('F', ' ').replace('U', ' ')
+print(max(len(x) for x in s.split()))
+
+
+# 7095
+from fnmatch import *
+for i in range(0, 10 ** 8, 21):
+    if fnmatch(str(i), '1234*54'):
+        print(i, i // 21)
