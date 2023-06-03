@@ -1,0 +1,97 @@
+# 6878
+print('x y z w')
+for x in range(2):
+    for y in range(2):
+        for z in range(2):
+            for w in range(2):
+                c = (not(y <= (x == w))) and (z <= x)
+                if c == 1: print(x, y, z, w)
+
+
+# 6885
+for n in range(1, 100):
+    b = bin(n)[2:]
+    if n % 2 == 0: b = '1' + b + '00'
+    else: b += bin(sum(int(x) for x in b))[2:]
+    c = int(b, 2)
+    if c > 190:
+        print(c, n)
+
+
+# 6894
+from itertools import product
+c = 0
+for i in product('алпця', repeat=5):
+    i = ''.join(i)
+    c += 1
+    if i.count('а') <= 1 and i.count('ц') == 2 and i.count('л') == 0:
+        print(c, i)
+        break
+
+
+# 7262
+a = 60 * '4' + 60 * '6' + 60 * '8'
+while '46' in a or '84' in a or '86' in a:
+    a = a.replace('46', '64', 1)
+    a = a.replace('84', '48', 1)
+    a = a.replace('86', '68', 1)
+print(a[24:25], a[74:75], a[149:150])
+
+
+# 7264
+c = 0
+a = 343 ** 515 - 6 * 49 ** 520 + 5 * 49 ** 510 - 3 * 7 ** 530 - 550
+while a > 0:
+    a = a // 7
+    if a % 7 == 6: c += 1
+print(c)
+
+
+# 7265
+def f(x):
+    return ((x % 2 == 0) <= (not(x % 3 == 0))) or (x + a >= 100)
+for a in range(1, 1000):
+    if all(f(x) for x in range(1, 1000)): 
+        print(a)
+
+
+# 7266
+def f(n):
+    if n < 3: return 1
+    if n > 2 and n % 2 == 0: return f(n - 1) + n - 1
+    if n > 2 and n % 2 != 0: return f(n - 2) + 2 * n - 2
+print(f(33))
+
+
+# 7267
+c = []
+s = [int(x) for x in open('C:/Users/User/Desktop/17.txt')]
+m = min(s)
+for i in range(len(s) - 1):
+    if (s[i] % 117 == m) or (s[i + 1] % 117 == m):
+        c.append(s[i] + s[i + 1])
+print(len(c), max(c))
+
+
+#7271
+def f(x, y):
+    if x < y: return 0
+    if x == y: return 1
+    if x > y: return f(x - 1, y) + f(x // 2, y)
+print(f(30, 9) * f(9, 1))
+
+
+#7272
+s = open('C:/Users/User/Desktop/24_7272.txt').readline()
+m = [0] * (len(s) + 2)
+for i in range(len(s) - 1):
+    if s[i] + s[i + 1] in ('AB', 'CB'):
+        m[i + 2] = max(m[i + 2], m[i] + 2)
+print(max(m) // 2)
+
+
+# 7273
+from fnmatch import fnmatch
+for i in range(0, 10 ** 9, 23):
+    if fnmatch(str(i), '12345?7?8'):
+        print(i, i // 23)
