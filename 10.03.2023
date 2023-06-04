@@ -1,0 +1,95 @@
+# 6737
+print('x y z w')
+for x in range(2):
+    for y in range(2):
+        for z in range(2):
+            for w in range(2):
+                c = (x <= (not(y <= z))) or (w)
+                if c == 0: print(x, y, z, w)
+
+
+# 6740
+for n in range(1, 9):
+    b = bin(n)[2:]
+    if n % 2 == 0: b += '10'
+    else: b = '1' + b + '01'
+    c = int(b, 2)
+    print(c, n)
+
+
+# 6743
+from itertools import product
+c = 0
+for i in product('айкос', repeat=5):
+    i = ''.join(i)
+    c += 1
+    if i.count('о') <= 1 and 'сс' not in i:
+        print(i, c)
+
+# 6747
+a = 104 * '7'
+while '33333' in a or '777' in a:
+    if '33333' in a: 
+        a = a.replace('33333', '7', 1)
+    else:
+        a = a.replace('777', '3', 1)
+print(a)
+
+#6749
+c = 0
+a = 2 * 729 ** 1021 - 2 * 243 ** 1022 + 81 ** 1023 - 2 * 27 ** 1024 - 1025
+while a > 0:
+    if a % 3 == 0:
+        c += 1
+        a //= 3
+    else:
+        a //= 3
+print(c)
+
+
+# 6750
+def f( x, y):
+    return (x + y <= 32) or (y <= x + 4) or (y >= a)
+for a in range(0, 1000):
+    if all(f(x, y) for x in range(0, 1000) for y in range(0, 1000)):
+        print(a)
+
+
+# 6751
+def f(n):
+    if n < 3: return 2
+    if n > 2 and n % 2 == 0: return f(n - 2) - f(n - 1) + 2
+    else: return f(n - 1) - f(n - 2) - 2
+print(f(29))
+
+
+# 6752
+s = [int(x) for x in open('C:/Users/User/Desktop/17_6752.txt')]
+res = []
+c = 0
+for j in s:
+    if j % 3 == 0:
+        c += 1
+for i in range(len(s) - 1):
+    if ((s[i] < 0) and (s[i] + s[i + 1]) < c) or ((s[i + 1] < 0) and (s[i] + s[i + 1]) < c):
+        res.append(s[i] + s[i + 1])
+print(len(res), max(res))
+
+
+# 6756
+def f(x, y):
+    if x < y: return 0
+    if x == y: return 1
+    if x > y: return f(x - 2, y) + f(x // 2, y)
+    print(f(40, 10) * f(10, 2))
+
+
+# 6757
+print(max(len(c) for c in open('C:/Users/User/Desktop/24_6757.txt').readline().replace('CFE', '*').replace('FCE', '*').replace('C', ' ').replace('E', ' ').replace('D', ' ').replace('F', ' ').split()))
+
+
+# 6758
+from fnmatch import *
+for i in range(0, 10 ** 8, 23):
+    if fnmatch(str(i), '2*5443?1'):
+    print(i, i // 23)
