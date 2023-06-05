@@ -1,0 +1,121 @@
+#8489
+print('x y z w')
+for x in range(2):
+    for y in range(2):
+        for z in range(2):
+            for w in range(2):
+                c = ((w <= y) <= (x == y)) or not(z)
+                if c == 0: print(x, y, z, w)
+
+
+# 8493
+for n in range(1, 200):
+    b = bin(n)[2:]
+    if n % 3 == 0: b += b[-4:]
+    else: b += bin((n % 3) * 3)[2:]
+    r = int(b, 2)
+    if r < 76:
+        print(n)
+
+
+# 8496
+from itertools import product
+c = 0
+for i in product('аворт', repeat=6):
+    i = ''.join(i)
+    c += 1
+    if i == 'ворота':
+        print(c, i)
+
+
+# 8500
+for n in range(3, 200):
+    a = '2' + '5' * n
+    while '25' in a or '355' in a or '555' in a:
+        a = a.replace('25', '5', 1)
+        a = a.replace('355', '52', 1)
+        a = a.replace('555', '3', 1)
+    if a.count('3') == 2:
+        print(n)
+        break
+
+
+# 8502
+for i in '0123456789abcde':
+    c = int(f'99658{i}29', 15) + int(f'102{i}023', 15)
+    if c % 14 == 0: print(i, c // 14)
+
+
+# 8503
+def f(x):
+    return ((x & 52 != 0) and (x & 36 == 0)) <= (x & a != 0)
+for a in range(0, 1000):
+    if all(f(x) for x in range(0, 1000)):
+    print(a)
+        break
+
+
+# 8520
+def f(n):
+    if n >= 2025: return n
+    else: return n + 3 + f(n + 3)
+print(f(2018) - f(2022))
+
+
+# 8504
+s = [int(x) for x in open('C:/Users/User/Desktop/17_8504.txt')]
+res = []
+m = min(x for x in s if 100 <= x <= 999 and x % 10 == 5)
+for i in range(len(s) - 1):
+    if (100 <= s[i] <= 999) and ((s[i] + s[i + 1]) % m == 0) or (100 <= s[i + 1] <= 999) and ((s[i] + s[i + 1]) % m == 0):
+        res.append(s[i] + s[i + 1])
+print(len(res), max(res))
+
+
+#8508
+def f(x, y):
+    if x > y or x == 12: return 0
+    if x == y: return 1
+    else: return f(x + 1, y) + f(x + 2, y) + f(x * 2, y)
+print(f(2, 9) * f(9, 17))
+
+
+# 8510
+s = open('C:/Users/User/Desktop/24_8510.txt').readline().replace('O', 'N').replace('P', 'N')
+while 'NN' in s:
+    s = s.replace('NN', 'N N')
+print(max(len(el) for el in s.split()))
+
+
+# 8511
+from fnmatch import *
+for i in range(0, 10 ** 8, 253):
+    if fnmatch(str(i), '12??15*6'):
+    print(i, i // 253)
+
+
+# 8512
+s = open('C:/Users/User/Desktop/26_8512.txt')
+k = int(s.readline())
+p = int(s.readline())
+a = []
+for i in s:
+    x, y = map(int, i.split())
+    a.append([x, y])
+a.sort()
+res = 0
+b = []
+for i in range(0, p):
+    if len(b) != k:
+        b.append(a[i][1])
+        res += 1
+    else:
+        ind = -1
+        for x in b:
+            ind += 1
+            if x + 1 <= a[i][0]:
+                b[ind] = a[i][1]
+                res += 1
+                print(ind + 1)
+                break
+print(res)
